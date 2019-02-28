@@ -4,12 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JavazoosApplication
+public class JavaZoosApplication
 {
 
     public static void main(String[] args)
     {
-        SpringApplication.run(JavazoosApplication.class, args);
+        SpringApplication.run(JavaZoosApplication.class, args);
     }
 
 }
