@@ -23,13 +23,22 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
     @Override
     public void configure(HttpSecurity http) throws Exception
     {
+//        http.
+//                anonymous().disable()
+//                .authorizeRequests()
+//                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+//                .antMatchers("/users/**").access("hasRole('ROLE_ADMIN')")
+//                .antMatchers("/courses/**").access("hasRole('ROLE_USER')")
+//                .antMatchers("/students/**").access("hasRole('ROLE_USER')")
+//                .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+
         http.
                 anonymous().disable()
                 .authorizeRequests()
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/users/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/courses/**").access("hasRole('ROLE_USER')")
-                .antMatchers("/students/**").access("hasRole('ROLE_USER')")
+                .antMatchers("/admin/**").access("hasAnyRole('ROLE_ADMIN')")
+                .antMatchers("/users/**").access("hasAnyRole('ROLE_ADMIN')")
+                .antMatchers("/animals/**").access("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+                .antMatchers("/zoos/**").access("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
                 .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
     }
 }
